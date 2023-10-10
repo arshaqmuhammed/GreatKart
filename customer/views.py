@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from customer.models import Customer
 # Create your views here.
 
 
@@ -7,7 +9,7 @@ def customer_home(request):
 
 
 def store(request):
-    return render(request, 'customer/store.html')
+    return render(request, 'customer/store.html')               
 
 
 def product_detail(request):
@@ -39,10 +41,31 @@ def seller_login(request):
 
 
 def customer_signup(request):
-     
+    msg = ''
+    if request.method == 'POST':
+        firstname = request.POST['fname']
+        lastname = request.POST['lastname']
+        email = request.POST['email']
+        gender = request.POST['gender']
+        city = request.POST['city']
+        country = request.POST['country']
+        password = request.POST['password']
+
+        customer = Customer(
+            firstname = firstname,
+            lastname = lastname,
+            email = email,
+            gender = gender,
+            city = city,
+            country = country,
+            paswword = password)
+        
+        customer.save()
+        msg = 'Registration succesfull..!!'
+        
 
 
-    return render(request, 'customer/customer_signup.html',)
+    return render(request, 'customer/customer_signup.html',{'message': msg})
 
 
 def customer_login(request):
