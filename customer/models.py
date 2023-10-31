@@ -12,7 +12,9 @@ class Customer(models.Model):
 
     class Meta():
         db_table = 'customer_tb'
-    
+
+
+
     
     
 

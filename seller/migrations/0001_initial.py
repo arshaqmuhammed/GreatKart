@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Customer',
+            name='Seller',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('firstname', models.CharField(max_length=30)),
@@ -22,9 +22,17 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(max_length=20)),
                 ('country', models.CharField(max_length=10)),
                 ('paswword', models.CharField(max_length=20)),
+                ('picture', models.ImageField(upload_to='seller/')),
+                ('accnumber', models.CharField(max_length=30)),
+                ('loginid', models.CharField(max_length=30)),
+                ('company_name', models.CharField(default='', max_length=20)),
+                ('bank_name', models.CharField(default='', max_length=20)),
+                ('bank_branch', models.CharField(default='', max_length=20)),
+                ('ifsc', models.CharField(default='', max_length=30)),
+                ('status', models.CharField(default='pending', max_length=50)),
             ],
             options={
-                'db_table': 'customer_tb',
+                'db_table': 'seller_tb',
             },
         ),
     ]
